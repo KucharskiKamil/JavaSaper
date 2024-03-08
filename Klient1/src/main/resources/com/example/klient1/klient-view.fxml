@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.klient1.klientController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+    <StackPane prefHeight="150.0" prefWidth="200.0">
+        <children>
+            <VBox fx:id="loginAndRegisterVBox" alignment="CENTER" spacing="10.0">
+                <HBox alignment="CENTER" spacing="10.0">
+                    <Button onAction="#onWidok1Click" text="Logowanie" />
+                    <Button onAction="#onWidok2Click" text="Rejestracja" />
+                </HBox>
+
+                <StackPane>
+                    <VBox fx:id="widok1" spacing="10.0">
+                        <TextField fx:id="usernameLoginField" promptText="Username" />
+                        <PasswordField fx:id="passwordLoginField" promptText="Password" />
+                        <Button onAction="#onLoginButtonClick" text="Zaloguj" />
+                  <VBox alignment="TOP_CENTER" maxHeight="100.0" prefHeight="80.0" prefWidth="100.0">
+                     <children>
+                              <Label fx:id="resultLoginDisplay" alignment="CENTER" contentDisplay="CENTER" maxHeight="80.0" prefHeight="50.0" textAlignment="CENTER" />
+                     </children>
+                  </VBox>
+                    </VBox>
+                    <VBox fx:id="widok2" spacing="10.0" visible="false">
+                        <TextField fx:id="emailRegisterField" promptText="Email" />
+                        <TextField fx:id="usernameRegisterField" promptText="Username" />
+                        <PasswordField fx:id="passwordRegisterField" promptText="Password" />
+                        <Button onAction="#onRegisterButtonClick" text="Zarejestruj" />
+                        <Label fx:id="resultRegisterDisplay" alignment="CENTER" textAlignment="CENTER" />
+                    </VBox>
+                </StackPane>
+            </VBox>
+            <VBox fx:id="mainMenuVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+                <children>
+                    <Button fx:id="playButton" mnemonicParsing="false" onAction="#enterPlayBody" prefHeight="30.0" prefWidth="100.0" text="Graj">
+                        <VBox.margin>
+                            <Insets bottom="20.0" />
+                        </VBox.margin>
+                    </Button>
+                    <Button fx:id="settingsButton" mnemonicParsing="false" onAction="#enterSettingsBody" prefHeight="30.0" prefWidth="100.0" text="Ustawienia">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin></Button>
+                    <Button fx:id="scoresButton" mnemonicParsing="false" onAction="#enterScoreBody" prefHeight="30.0" prefWidth="100.0" text="Wyniki">
+                  <VBox.margin>
+                     <Insets bottom="20.0" />
+                  </VBox.margin></Button>
+                    <HBox alignment="BOTTOM_RIGHT" prefHeight="0.0">
+                        <children>
+                            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="30.0" prefWidth="70.0" text="Wyloguj" />
+                        </children>
+                        <VBox.margin>
+                            <Insets top="17.0" />
+                        </VBox.margin>
+                    </HBox>
+                </children>
+                <VBox.margin>
+                    <Insets />
+                </VBox.margin>
+            </VBox>
+         <VBox fx:id="tableScoreBody" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+            <children>
+               <TableView fx:id="tableScoresDisplay" maxHeight="200.0" maxWidth="410.0" prefHeight="200.0" prefWidth="375.0">
+                 <columns>
+                   <TableColumn fx:id="usernameColumn" prefWidth="95.0" text="Username" />
+                   <TableColumn fx:id="gamesPlayedColumn" prefWidth="100.0" text="Rozegrane gry" />
+                   <TableColumn fx:id="bestScoreColumn" prefWidth="100.0" text="Najlepszy wynik" />
+                   <TableColumn fx:id="bestTimeColumn" prefWidth="100.0" text="Najlepszy czas" />
+                 </columns>
+               </TableView>
+               <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                     <Button fx:id="returnToMainMenuFromScoresButton" alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainMenuFromScoresButton" prefHeight="30.0" prefWidth="70.0" text="Wróć" textAlignment="CENTER">
+                        <opaqueInsets>
+                           <Insets />
+                        </opaqueInsets>
+                        <HBox.margin>
+                           <Insets top="30.0" />
+                        </HBox.margin></Button>
+                  </children>
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </HBox>
+            </children>
+         </VBox>
+         <VBox fx:id="settingsBody" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+             <children>
+                 <TableView fx:id="tabelaUstawien" editable="true" minHeight="100.0" prefHeight="150.0" prefWidth="200.0">
+                     <columns>
+                         <TableColumn fx:id="widthColumn" prefWidth="75.0" text="Szerokość">
+                         </TableColumn>
+                         <TableColumn fx:id="heightColumn" prefWidth="75.0" text="Wysokość">
+                         </TableColumn>
+                         <TableColumn fx:id="bombsColumn" prefWidth="75.0" text="Bomby">
+                         </TableColumn>
+                         <TableColumn fx:id="boardColumn" prefWidth="75.0" text="Rozmiar">
+                         </TableColumn>
+                         <TableColumn fx:id="rowIdColumn" prefWidth="75.0" text="Id">
+                         </TableColumn>
+                     </columns>
+                 </TableView>
+                 <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                         <TextField fx:id="addSettingsWidth" />
+                         <TextField fx:id="addSettingsHeight" />
+                         <TextField fx:id="addSettingsAmount" />
+                         <TextField fx:id="addSettingsSize" />
+                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#addSettings" prefHeight="30" prefWidth="160.0" text="Dodaj" textAlignment="CENTER" />
+                     </children>
+                  <VBox.margin>
+                     <Insets bottom="30.0" />
+                  </VBox.margin>
+                 </HBox>
+                  <HBox>
+                      <Label alignment="BOTTOM_LEFT">
+                                Wybierz ustawienia:
+                            </Label>
+                      <ChoiceBox fx:id="choiceBoxSettings" prefWidth="70.0">
+                                </ChoiceBox>
+                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#changeSelectedSettings" prefHeight="30" prefWidth="50" text="Ustaw" textAlignment="CENTER">
+                      </Button>
+                      <Button alignment="CENTER" mnemonicParsing="false" onAction="#deleteSettings" prefHeight="30" prefWidth="50" text="Usuń" textAlignment="CENTER">
+                      </Button>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+
+                        </HBox>
+                <Label fx:id="setDeleteSettingsLabel" alignment="CENTER" />
+               <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                  <children>
+                      <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onAction="#returnToMainMenuFromSettingsButton" text="Wróć" textAlignment="CENTER">
+                        <padding>
+                           <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                        </padding>
+                     </Button>
+                  </children>
+               </HBox>
+            </children>
+         </VBox>
+            <VBox fx:id="playBodyVBox" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" visible="false">
+                <children>
+               <Label fx:id="gameTimeLabel" text="Czas: 0" />
+               <Label fx:id="gameScoreLabel" />
+                    <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                            <Label fx:id="playBodyBombsLabel" text="Bombs: " />
+                        </children>
+                    </HBox>
+                    <GridPane fx:id="gridPanelDoGry" alignment="TOP_CENTER">
+
+                    </GridPane>
+                    <Label fx:id="gamePlayLabelError" alignment="TOP_CENTER" textAlignment="CENTER" textFill="RED" />
+               <Button fx:id="resetGameButton" mnemonicParsing="false" onAction="#enterPlayBody" text="Resetuj" />
+               <VBox alignment="BOTTOM_RIGHT" prefHeight="50.0" prefWidth="100.0">
+                  <children>
+                          <Button alignment="CENTER" mnemonicParsing="false" onAction="#returnToMainMenuFromPlayBody" prefHeight="30.0" prefWidth="60.0" text="Wróć">
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                     </Button>
+                  </children>
+               </VBox>
+                </children>
+            </VBox>
+
+        </children>
+    </StackPane>
+</VBox>
